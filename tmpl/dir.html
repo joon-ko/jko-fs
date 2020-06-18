@@ -1,0 +1,17 @@
+<html>
+<head>
+    <title>file server</title>
+</head>
+<body>
+    {{$dirname := .Name}}
+    <h2>directory {{$dirname}}</h2>
+    {{range .Files}}
+    <div><a href="/v/{{$dirname}}/{{.Name}}">{{.Name}}</a></div>
+    {{end}}
+    <h3>upload a file to this directory</h3>
+    <form enctype="multipart/form-data" action="/u/{{$dirname}}" method="POST">
+        <div><input type="file" name="file" accept=".txt"></div>
+        <div><input type="submit" value="upload"></div>
+    </form>
+</body>
+</html>
